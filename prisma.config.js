@@ -1,4 +1,3 @@
-// prisma.config.js
 const { defineConfig } = require('prisma/config');
 require('dotenv').config();
 

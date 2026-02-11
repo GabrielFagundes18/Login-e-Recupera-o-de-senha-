@@ -1,4 +1,3 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -28,7 +27,6 @@
   --muted: #64748b;
 }
 
-/* BODY */
 body {
   background: linear-gradient(120deg, var(--bg), var(--bg-secondary));
   min-height: 100vh;
@@ -39,7 +37,6 @@ body {
   overflow: hidden;
 }
 
-/* MAIN */
 .main-container {
   width: 100%;
   max-width: 1100px;
@@ -53,7 +50,6 @@ body {
   animation: fadeIn 0.8s ease;
 }
 
-/* BRANDING */
 .branding-side {
   background: linear-gradient(
     135deg,
@@ -100,13 +96,12 @@ body {
   transform: scale(1.4);
 }
 
-/* FORM SIDE */
+
 .form-side {
   padding: 40px;
   position: relative;
 }
 
-/* TOP NAV */
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -133,7 +128,6 @@ body {
   cursor: pointer;
 }
 
-/* SLIDER */
 .form-viewport {
   width: 100%;
   height: 100%;
@@ -153,7 +147,6 @@ body {
   animation: slideUp 0.8s ease;
 }
 
-/* TABS */
 .tabs {
   margin-bottom: 30px;
 }
@@ -173,7 +166,6 @@ body {
   color: var(--muted);
 }
 
-/* INPUTS */
 .input-block {
   position: relative;
   margin-bottom: 24px;
@@ -209,7 +201,6 @@ body {
   color: var(--primary);
 }
 
-/* BUTTONS */
 .btn-submit {
   width: 100%;
   padding: 14px;
@@ -239,18 +230,18 @@ body {
   cursor: pointer;
 }
 
-/* MESSAGES */
+
 .error-msg {
   font-size: 12px;
   color: var(--error);
 }
 
-/* TELA DE RECUPERAÇÃO (OVERLAY) */
+
 .passwordRecovery {
   position: fixed;
   inset: 0;
   background: var(--bg);
-  display: none; /* Escondido por padrão */
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -260,7 +251,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Quando a classe .active for adicionada via JS */
 .passwordRecovery.active {
   display: flex;
   animation: slideIn 0.4s ease-out;
@@ -278,12 +268,10 @@ body {
   gap: 20px;
 }
 
-/* 3. BLOCOS DE INPUT E LABELS */
-/* Como no Step 3 os inputs estão soltos, tratamos o .input-block e os inputs diretos */
 .passwordRecovery .input-block, 
 .passwordRecovery div[id^="step"] {
   position: relative;
-  margin-bottom: 20px; /* Espaço para a label não bater no input de cima */
+  margin-bottom: 20px; 
 }
 
 .passwordRecovery input {
@@ -298,7 +286,6 @@ body {
   display: block;
 }
 
-/* Estilização das Labels conforme seu HTML */
 .passwordRecovery label {
   position: absolute;
   left: 12px;
@@ -310,7 +297,6 @@ body {
   transition: all 0.2s ease;
 }
 
-/* 4. EFEITO FLUTUANTE (Placeholder-shown é o segredo) */
 .passwordRecovery input:focus + label,
 .passwordRecovery input:not(:placeholder-shown) + label {
   top: -10px;
@@ -322,9 +308,8 @@ body {
 .btn-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    background-color: #94a3b8; /* Cor cinza para indicar travado */
+    background-color: #94a3b8; 
 }
-/* 5. BOTÕES */
 .btn-submit {
   width: 100%;
   padding: 14px;
@@ -342,19 +327,14 @@ body {
   background-color: #4f46e5;
 }
 
-/* 6. CORREÇÃO ESPECÍFICA PARA O STEP 3 (Onde os inputs estão soltos) */
-/* Isso evita que "Nova Senha" e "Confirmar Senha" fiquem colados */
+
 #step-3 input {
   margin-bottom: 25px;
 }
-/* Garante que os inputs soltos no Step 3 tenham espaço */
 #step-3 .input-block {
     margin-bottom: 25px !important;
 }
 
-
-/* Ajuste da label de confirmação que você marcou com top: 110px no HTML inline */
-/* O CSS abaixo sobrescreve para garantir que ela fique no lugar certo */
 #step-3 label {
   top: 12px !important; 
 }
@@ -364,7 +344,6 @@ body {
   top: -10px !important;
 }
 
-/* 7. TEXTOS E ERROS */
 .error-msg {
   color: #ff4d4d;
   display: block;
@@ -424,22 +403,75 @@ body {
   }
 }
 
-/* RESPONSIVO */
+
+/* TABLETS (Até 900px) */
 @media (max-width: 900px) {
+  body {
+    overflow-y: auto;
+    padding: 20px;
+  }
+
   .main-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
     height: auto;
+    max-width: 500px; 
+    min-height: 600px;
   }
 
   .branding-side {
     display: none;
   }
 
+  .form-side {
+    padding: 30px 20px;
+  }
+
   .form-box {
     width: 100%;
+    padding-right: 0; 
   }
 
   .form-slider {
-    width: 100%;
+    width: 200%;
+  }
+
+  #step-1, #step-2, #step-3 {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .logo {
+    font-size: 32px;
+  }
+
+  .form-side {
+    padding: 20px 15px;
+  }
+
+  .branding-content h1 {
+    font-size: 24px;
+  }
+
+  .input-block input {
+    padding: 12px;
+    font-size: 16px; 
+  }
+
+  .btn-submit {
+    padding: 12px;
+  }
+
+  #step-1, #step-2, #step-3 {
+    width: 95%;
+  }
+
+  .passwordRecovery {
+    padding: 1rem;
   }
 }
